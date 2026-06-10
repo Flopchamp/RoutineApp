@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "RoutineApp",
+    "slug": "RoutineApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "routineapp",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.harrisononyango.routineapp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.harrisononyango.routineapp"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-notifications"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "fa07ada0-4cb5-43c0-b3f9-870ad4926188"
+      }
+    },
+    "owner": "harrisononyango"
+  }
+}
