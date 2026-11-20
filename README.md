@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# RoutineApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A daily routine planner for phones. The day is split into Morning, Work and
+Evening; each block holds a time, a title, a duration and a category, and the
+app raises a local notification when one is due.
 
-## Get started
+## How it works
 
-1. Install dependencies
+`app/index.tsx` renders the day as three sections and ships with a default
+routine, so the app is usable before anything has been added.
 
-   ```bash
-   npm install
-   ```
+`storage/routines.ts` persists routines to `AsyncStorage`, so edits survive a
+restart without a backend. Reminders are local notifications through
+`expo-notifications` — scheduled on the device, needing no push server and no
+network connection.
 
-2. Start the app
+Routing is `expo-router`, `components/RoutineBlock.tsx` draws a single entry,
+and the themed components with the `useColorScheme` hook give light and dark
+mode.
 
-   ```bash
-   npx expo start
-   ```
+## Running it
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Requires Node.js and the Expo tooling.
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Then open it in Expo Go, an Android emulator or an iOS simulator from the
+options Expo prints.
 
-## Learn more
+Notifications fire only on a physical device or a simulator with notification
+permission granted; the app requests permission on first launch.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Building
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+`eas.json` holds the build profiles:
 
-## Join the community
+```bash
+eas build --platform android
+```
 
-Join our community of developers creating universal apps.
+## Stack
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+React Native · Expo · TypeScript · Expo Router · AsyncStorage ·
+expo-notifications · React Native Reanimated
